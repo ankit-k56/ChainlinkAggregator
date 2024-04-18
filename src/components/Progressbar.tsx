@@ -15,7 +15,7 @@ const Progressbar: React.FC<ProgressbarProps> = ({ progess }) => {
     return () => clearTimeout(timer);
   }, []);
 
-  return <Progress value={progress} className="w-[40%]" />;
+  return <Progress value={progress} className="w-[70%]" />;
 };
 
 export default Progressbar;

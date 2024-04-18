@@ -2,17 +2,52 @@
 import Image from "next/image";
 import ReactSpeedometer from "react-d3-speedometer";
 import { Selectcrypto } from "@/components/Selectcrypto";
+import { useState } from "react";
+import {
+  Select,
+  SelectContent,
+  SelectGroup,
+  SelectItem,
+  SelectLabel,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 
 export default function Home() {
+  const [crypto, setCrypto] = useState<string>("Ethereum");
+
+  const handleChange = (value: string) => {
+    setCrypto(value);
+    console.log(crypto);
+  };
+
   return (
     <main className="w-full flex flex-col gap-20 py-16 items-center">
-      <Selectcrypto />
+      {/* <Selectcrypto /> */}
+      <Select value={crypto} onValueChange={handleChange}>
+        <SelectTrigger className="w-[180px]">
+          <SelectValue placeholder="Select a crypto" />
+        </SelectTrigger>
+        <SelectContent>
+          <SelectGroup>
+            <SelectLabel>Select the crypto</SelectLabel>
+            <SelectItem value="Ethereum">Etherium</SelectItem>
+            <SelectItem value="Bitcoin">Bitcoin</SelectItem>
+            <SelectItem value="Dogecoin">Dogecoin</SelectItem>
+            <SelectItem value="Solana">Solana</SelectItem>
+
+            {/* <SelectItem value="grapes">Grapes</SelectItem>
+          <SelectItem value="pineapple">Pineapple</SelectItem> */}
+          </SelectGroup>
+        </SelectContent>
+      </Select>
 
       <div className="text-center flex flex-col gap-5">
         <ReactSpeedometer
-          maxValue={500}
-          value={43}
+          maxValue={100}
+          value={0}
           width={500}
+          minValue={-100}
           // ringWidth={0}
           needleColor="red"
           startColor="blue"

@@ -26,7 +26,8 @@
     "**/*.ts",
     "**/*.tsx",
     ".next/types/**/*.ts",
-    "src/app/page.tsx"
+    "src/app/page.tsx",
+    "src/utils/EthProvider.js"
   ],
   "exclude": ["node_modules"]
 }
