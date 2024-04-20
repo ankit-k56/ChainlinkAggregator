@@ -14,15 +14,15 @@ import {
 } from "@/components/ui/select";
 
 export default function Home() {
-  const [crypto, setCrypto] = useState("Ethereum");
+  const [crypto, setCrypto] = useState<string>("Ethereum");
 
-  const handleChange = (value) => {
+  const handleChange = (value: string) => {
     setCrypto(value);
     console.log(crypto);
   };
 
   return (
-    <main className="w-full flex flex-col gap-20 py-16 items-center">
+    <div className="w-full flex flex-col gap-20 py-12 items-center">
       {/* <Selectcrypto /> */}
       <Select value={crypto} onValueChange={handleChange}>
         <SelectTrigger className="w-[180px]">
@@ -56,13 +56,13 @@ export default function Home() {
             {
               text: "Bearish",
               // position: "INSIDE",
-              position: "OUTSIDE",
-              color: "#555",
+
+              color: "#fff",
             },
             {
               text: "Bullish",
-              position: "OUTSIDE",
-              color: "#555",
+
+              color: "#fff",
             },
           ]}
           endColor="green"
@@ -71,6 +71,6 @@ export default function Home() {
           This data is based of past 24 hr trends of the cryto
         </p>
       </div>
-    </main>
+    </div>
   );
 }
