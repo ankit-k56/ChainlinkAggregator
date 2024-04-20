@@ -3,7 +3,7 @@ import Progressbar from "@/components/Progressbar";
 import Link from "next/link";
 
 import { Button } from "@/components/ui/button";
-const page = () => {
+const Page = () => {
   return (
     <div className="flex flex-col gap-3 items-center my-8">
       <div className="flex w-[500px] border-slate-200 border-2 mx-auto p-8 rounded-lg flex-col gap-7">
@@ -40,4 +40,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default Page;

@@ -8,7 +8,7 @@ type PartyDict = { [key: string]: number };
 import { fetchIndiaResults } from "@/actions/indiaresults";
 import { Button } from "@/components/ui/button";
 
-const page = () => {
+const Page = () => {
   const [partyDict, setPartyDict] = useState<PartyDict>({});
   const parseInputString = (inputString: string) => {
     const partyEntries = inputString.split(",");
@@ -39,31 +39,18 @@ const page = () => {
       <div className="flex w-[500px] border-slate-200 border-2 mx-auto p-8 rounded-lg flex-col gap-7">
         {Object.entries(partyDict).map(([key, value]) => {
           return (
-            <div className="flex gap-5 font-extrabold text-sm items-center">
+            <div
+              key={key}
+              className="flex gap-5 font-extrabold text-sm items-center"
+            >
               <div className=" flex w-full items-center gap-3">
                 <Progressbar progess={value} />
-                <span>{value}%</span>
+                {!value ? <span>1%</span> : <span>{value}%</span>}
               </div>
               <span>{key}</span>
             </div>
           );
         })}
-        {/* <div className="flex gap-5 font-extrabold text-sm items-center">
-          <Progressbar progess={80} />
-          <span>Bjp</span>
-        </div>
-        <div className="flex gap-5 font-extrabold text-sm items-center">
-          <Progressbar progess={80} />
-          <span>I.N.D.I.A</span>
-        </div>
-        <div className="flex gap-5 font-extrabold text-sm items-center">
-          <Progressbar progess={80} />
-          <span>AAP</span>
-        </div>
-        <div className="flex gap-5 font-extrabold text-sm items-center">
-          <Progressbar progess={80} />
-          <span>TMC</span>
-        </div> */}
       </div>
       <p className="text-sm my-5">
         India Election Predictions accoring to last 24hr news data
@@ -78,4 +65,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default Page;
