@@ -14,7 +14,7 @@ const page = () => {
     const partyEntries = inputString.split(",");
     const newPartyDict: PartyDict = {};
     partyEntries.forEach((entry) => {
-      const parts = entry.split("-");
+      const parts = entry.split(":");
       const partyName = parts[0];
 
       const partyNumber = parseInt(parts[1]);
@@ -25,8 +25,11 @@ const page = () => {
   useEffect(() => {
     const fetchdata = async () => {
       const data = (await fetchIndiaResults()) as string;
+      console.log(data);
 
       parseInputString(data);
+
+      console.log(partyDict);
     };
     fetchdata();
   }, []);

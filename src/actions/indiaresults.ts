@@ -14,11 +14,8 @@ export const fetchIndiaResults = async () => {
     );
     const data = await morphContract.latestData();
     const result = BytestoString(data);
-    // console.log(result);
-    // console.log(newsData);
-    // console.log("jjkk");
-    // return newsData;
-    return "BJP-40,INC-20,BSP-10,CPI-5,CPM-5,NCP-5";
+
+    return result;
   } catch (err) {
     console.error(err);
     return err;
