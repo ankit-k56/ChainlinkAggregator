@@ -1,18 +1,15 @@
 export default function jsonValueToBytes32(value: string | number) {
   if (typeof value === "string") {
-    const trimmedString = value.slice(0, 31);
-    const encoder = new TextEncoder();
-    const bytes = encoder.encode(trimmedString);
-
-    const paddedBytes = new Uint8Array(32);
-    paddedBytes.set(bytes, 0);
-    return paddedBytes;
+    const trimmedString = value.slice(0, 32).padEnd(32, "\0");
+    const bytes = new Uint8Array(32);
+    for (let i = 0; i < trimmedString.length; i++) {
+      bytes[i] = trimmedString.charCodeAt(i);
+    }
+    return bytes;
   } else if (typeof value === "number") {
-    const byteArray = new Uint8Array(4);
-    const buffer = new ArrayBuffer(4);
-    const view = new DataView(buffer);
-    view.setInt32(0, value, false);
-    byteArray.set(Array.from(buffer), 0);
+    const byteArray = new Uint8Array(32);
+    const view = new DataView(byteArray.buffer);
+    view.setBigUint64(0, BigInt(value), false);
     return byteArray;
   } else {
     throw new Error("Unsupported data type for conversion to bytes32");

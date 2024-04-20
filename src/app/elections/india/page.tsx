@@ -16,8 +16,14 @@ const Page = () => {
     partyEntries.forEach((entry) => {
       const parts = entry.split(":");
       const partyName = parts[0];
+      let partyNumber = 0;
 
-      const partyNumber = parseInt(parts[1]);
+      if (!parts[1]) {
+        partyNumber = 1;
+      } else {
+        partyNumber = parseInt(parts[1]);
+      }
+
       newPartyDict[partyName] = partyNumber;
     });
     setPartyDict(newPartyDict);
@@ -45,7 +51,7 @@ const Page = () => {
             >
               <div className=" flex w-full items-center gap-3">
                 <Progressbar progess={value} />
-                {!value ? <span>1%</span> : <span>{value}%</span>}
+                <span>{value}%</span>
               </div>
               <span>{key}</span>
             </div>

@@ -14,6 +14,7 @@ export const fetchIndiaResults = async () => {
     );
     const data = await morphContract.latestData();
     const result = BytestoString(data);
+    console.log(result);
 
     return result;
   } catch (err) {

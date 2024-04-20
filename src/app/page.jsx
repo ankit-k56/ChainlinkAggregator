@@ -14,9 +14,9 @@ import {
 } from "@/components/ui/select";
 
 export default function Home() {
-  const [crypto, setCrypto] = useState<string>("Ethereum");
+  const [crypto, setCrypto] = useState < string > "Ethereum";
 
-  const handleChange = (value: string) => {
+  const handleChange = (value) => {
     setCrypto(value);
     console.log(crypto);
   };
