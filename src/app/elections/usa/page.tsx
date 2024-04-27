@@ -9,24 +9,25 @@ const Page = () => {
       <div className="flex w-[500px] border-slate-200 border-2 mx-auto p-8 rounded-lg flex-col gap-7">
         <div className="flex gap-5 font-extrabold text-sm items-center">
           <Progressbar progess={80} />
-          <span>Donald Trumph</span>
+          <span>Joe Biden</span>
         </div>
         <div className="flex gap-5 font-extrabold text-sm items-center">
           <Progressbar progess={80} />
-          <span>Donald Trumph</span>
+          <span>Joe Biden</span>
         </div>
         <div className="flex gap-5 font-extrabold text-sm items-center">
           <Progressbar progess={80} />
-          <span>Donald Trumph</span>
+          <span>Joe Biden</span>
         </div>
         <div className="flex gap-5 font-extrabold text-sm items-center">
           <Progressbar progess={80} />
-          <span>Donald Trumph</span>
+          <span>Joe Biden</span>
         </div>
       </div>
       <p className="text-sm my-5">
         Usa Election Predictions accoring to last 24hr data
       </p>
+      <p className="text-sm my-5">Will make this page functional in few days</p>
       <p>
         See India prections{" "}
         <Link

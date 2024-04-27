@@ -1,8 +1,15 @@
-import React from "react";
+"use client";
+import React, { useState } from "react";
+import { usePathname } from "next/navigation";
+import path from "path";
+import MobileNav from "./MobileNav";
 
 const Navbar = () => {
+  const pathname = usePathname();
+  const [isVisible, setIsVisible] = useState<boolean>(false);
   return (
     <nav className="border-gray-200 bg-gray-50 dark:bg-gray-800 dark:border-gray-700">
+      <MobileNav isVisible={isVisible} />
       <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
         <a href="#" className="flex items-center space-x-3 rtl:space-x-reverse">
           <img
@@ -17,6 +24,7 @@ const Navbar = () => {
         <button
           data-collapse-toggle="navbar-solid-bg"
           type="button"
+          onClick={() => setIsVisible(!isVisible)}
           className="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
           aria-controls="navbar-solid-bg"
           aria-expanded="false"
@@ -43,16 +51,21 @@ const Navbar = () => {
             <li>
               <a
                 href="/"
-                className="block py-2 px-3 md:p-0 text-white bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:dark:text-blue-500 dark:bg-blue-600 md:dark:bg-transparent"
+                className={`block py-2 px-3 md:p-0 text-white bg-blue-700 rounded md:bg-transparent ${
+                  pathname == "/" && "text-blue-700"
+                } md:dark:text-blue-500 dark:bg-blue-600 md:dark:bg-transparent`}
                 aria-current="page"
               >
-                Home
+                Cryptos
               </a>
             </li>
             <li>
               <a
                 href="/elections/india"
-                className="block py-2 px-3 md:p-0 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
+                className={`block py-2 px-3 md:p-0 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 dark:text-white ${
+                  pathname == "/elections/india" ||
+                  (pathname == "/elections/usa" && "text-blue-700")
+                } md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent`}
               >
                 Elections
               </a>

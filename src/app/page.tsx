@@ -42,7 +42,7 @@ export default function Home() {
         </SelectContent>
       </Select>
 
-      <div className="text-center flex flex-col gap-5">
+      <div className="text-center hidden md:flex flex-col gap-5">
         <ReactSpeedometer
           maxValue={100}
           value={0}
@@ -71,6 +71,36 @@ export default function Home() {
           This data is based of past 24 hr trends of the cryto
         </p>
       </div>
+      <div className="text-center md:hidden  flex flex-col gap-3">
+        <ReactSpeedometer
+          maxValue={100}
+          value={0}
+          width={350}
+          minValue={-100}
+          // ringWidth={0}
+          needleColor="red"
+          startColor="blue"
+          segments={2}
+          customSegmentLabels={[
+            {
+              text: "Bearish",
+              // position: "INSIDE",
+
+              color: "#fff",
+            },
+            {
+              text: "Bullish",
+
+              color: "#fff",
+            },
+          ]}
+          endColor="green"
+        />
+        <p className="text-sm text-stone-700">
+          This data is based of past 24 hr trends of the cryto
+        </p>
+      </div>
+      <p className="text-sm my-5">Will make this page functional in few days</p>
     </div>
   );
 }
